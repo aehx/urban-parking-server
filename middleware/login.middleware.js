@@ -21,7 +21,8 @@ exports.checkSignupField = [
   check("confirmPassword")
     .trim()
     .not()
-    .isEmpty().withMessage("You must Confirm your password")
+    .isEmpty()
+    .withMessage("You must Confirm your password")
     .custom((value, { req }) => {
       if (value !== req.body.password) {
         throw new Error("Both password must be the same");
@@ -30,9 +31,9 @@ exports.checkSignupField = [
     }),
 ];
 
-exports.checkLoginField = check("email")
+(exports.checkLoginField = check("email")
   .isEmail()
-  .withMessage("email / password is required !"),
+  .withMessage("email / password is required !")),
   check("password")
     .trim()
     .not()
@@ -40,6 +41,7 @@ exports.checkLoginField = check("email")
     .withMessage("email / password is required !");
 
 exports.validationResult = (req, res, next) => {
+  console.log("Request : ", req);
   const result = validationResult(req).array();
   if (!result.length) {
     return next();
