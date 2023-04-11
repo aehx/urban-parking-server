@@ -47,5 +47,5 @@ exports.validationResult = (req, res, next) => {
     return next();
   }
   const error = result[0].msg;
-  res.json({ success: false, message: error });
+  res.json({ success: false, message: error, req: req });
 };
