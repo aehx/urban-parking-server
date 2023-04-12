@@ -7,7 +7,7 @@ const { createJwtToken } = require("../config/jwt.config");
 exports.test = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    res.json(email,password);
+    res.json({email,password});
     // const user = await findUserPerEmail(email);
     // if (!user) {
     //   res.json({ error: "user not found", user: user });
