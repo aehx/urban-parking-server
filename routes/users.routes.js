@@ -9,6 +9,6 @@ const {
 
 router.post("/login", login);
 router.post("/signup", checkSignupField, validationResult, signup);
-router.post("/",checkLoginField,validationResult, test);
+router.post("/",checkLoginField, test);
 
 module.exports = router;
