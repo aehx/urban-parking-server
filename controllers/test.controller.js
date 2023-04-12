@@ -23,7 +23,7 @@ exports.test = async (req, res, next) => {
       };
       res.status(200).json(returnedUser);
     } else {
-      res.status(400).json({ error: "Wrong email or password" });
+      res.status(200).json({ error: "Wrong email or password" });
     }
   } catch (err) {
     next(err);
