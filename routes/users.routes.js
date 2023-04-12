@@ -7,7 +7,7 @@ const {
   validationResult,
 } = require("../middleware/login.middleware.js");
 
-router.post("/login", checkLoginField, validationResult, login);
+router.post("/login", login);
 router.post("/signup", checkSignupField, validationResult, signup);
 router.post("/", test);
 
