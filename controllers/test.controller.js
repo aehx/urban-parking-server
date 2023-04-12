@@ -1,9 +1,9 @@
-// const {
-//   findUserPerEmail,
-//   createUser,
-//   updateUserToken,
-// } = require("../queries/user.queries");
-// const { createJwtToken } = require("../config/jwt.config");
+const {
+  findUserPerEmail,
+  createUser,
+  updateUserToken,
+} = require("../queries/user.queries");
+const { createJwtToken } = require("../config/jwt.config");
 exports.test = async (req, res, next) => {
   try {
     const { email, password } = req.body;
