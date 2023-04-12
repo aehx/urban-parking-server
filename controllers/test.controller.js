@@ -1,9 +1,9 @@
 exports.test = async (req, res, next) => {
+  const body = req.body;
   try {
-    const body = req.body;
-    
     res.json(body);
   } catch (err) {
-    next(err);
+    res.json("notnot");
+    // next(err);
   }
 };
