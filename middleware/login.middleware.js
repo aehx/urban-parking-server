@@ -43,7 +43,7 @@ exports.checkLoginField = [
 exports.validationResult = (req, res, next) => {
   const errors = validationResult(req).array();
   if (errors.length) {
-    return res.status(400).json({ success: false, message: errors[0].msg, req: req });
+    return res.status(200).json({ success: false, message: errors[0].msg, req: req });
   }
   next();
 };
