@@ -12,8 +12,8 @@ exports.test = async (req, res, next) => {
     if (!user) {
       res.json({ error: "user not found", user: user });
     }
-    // const match = await user.comparePassword(password);
-    // if (match) {
+    const match = await user.comparePassword(password);
+    if (match) {
       const token = await createJwtToken(user._id);
       await updateUserToken(user._id, token);
       const returnedUser = {
@@ -22,9 +22,9 @@ exports.test = async (req, res, next) => {
         token,
       };
       res.status(200).json(returnedUser);
-    // } else {
-      // res.status(400).json({ error: "Wrong email or password" });
-    // }
+    } else {
+      res.status(400).json({ error: "Wrong email or password" });
+    }
   } catch (err) {
     next(err);
   }
