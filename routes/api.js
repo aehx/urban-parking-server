@@ -1,8 +1,7 @@
+const { test } = require("../controllers/test.controller");
+
 const router = require("express").Router();
 
-router.post("/", (req, res) => {
-  const body = req.body;
-  res.json(body);
-});
+router.post("/", test);
 
 module.exports = router;
