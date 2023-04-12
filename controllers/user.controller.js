@@ -5,7 +5,7 @@ const {
 } = require("../queries/user.queries");
 const { createJwtToken } = require("../config/jwt.config");
 
-exports.login = async (req, res, next) => {
+exports.login = (req, res, next) => {
   console.log(req.body);
   const { email, password } = req.body;
   res.json(email, password);
