@@ -5,32 +5,31 @@ const {
 } = require("../queries/user.queries");
 const { createJwtToken } = require("../config/jwt.config");
 
-exports.login = (req, res, next) => {
+exports.login = async (req, res, next) => {
   console.log(req.body);
   const { email, password } = req.body;
-  res.json(email, password);
-  // try {
-  //   const user = await findUserPerEmail(email);
-  //   if (!user) {
-  //     res.json({ error: "user not found" });
-  //   }
-  //   const match = await user.comparePassword(password);
-  //   if (match) {
-  //     const token = await createJwtToken(user._id);
-  //     await updateUserToken(user._id, token);
-  //     const returnedUser = {
-  //       username: user.username,
-  //       favorites: user.favorites,
-  //       token,
-  //     };
-  //     res.status(200).json(returnedUser);
-  //   } else {
-  //     res.status(400).json({ error: "Wrong email or password" });
-  //   }
-  //   next();
-  // } catch (e) {
-  //   next(e);
-  // }
+  try {
+    const user = await findUserPerEmail(email);
+    if (!user) {
+      res.json({ error: "user not found" });
+    }
+    const match = await user.comparePassword(password);
+    if (match) {
+      const token = await createJwtToken(user._id);
+      await updateUserToken(user._id, token);
+      const returnedUser = {
+        username: user.username,
+        favorites: user.favorites,
+        token,
+      };
+      res.status(200).json(returnedUser);
+    } else {
+      res.status(400).json({ error: "Wrong email or password" });
+    }
+    next();
+  } catch (e) {
+    next(e);
+  }
 };
 
 exports.signup = async (req, res, next) => {

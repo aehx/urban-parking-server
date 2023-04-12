@@ -1,4 +1,8 @@
-exports.test = (req, res) => {
-  const body = req.body;
-  res.json("Body", body);
+exports.test = async (req, res, next) => {
+  try {
+    const body = req.body;
+    res.json(body);
+  } catch (err) {
+    next(err);
+  }
 };
