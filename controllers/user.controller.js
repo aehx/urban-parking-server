@@ -11,7 +11,7 @@ exports.login = async (req, res, next) => {
   try {
     const user = await findUserPerEmail(email);
     if (!user) {
-      res.json({ error: "user not found" });
+      res.json({ error: "user not found", user: user });
     }
     const match = await user.comparePassword(password);
     if (match) {
