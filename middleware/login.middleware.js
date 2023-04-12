@@ -31,14 +31,14 @@ exports.checkSignupField = [
     }),
 ];
 
-(exports.checkLoginField = check("email")
-  .isEmail()
-  .withMessage("email / password is required !")),
-  check("password")
+exports.checkLoginField =[
+  check('email').trim().isEmail().withMessage('email / password is required!'),
+  check('password')
     .trim()
     .not()
     .isEmpty()
-    .withMessage("email / password is required !");
+    .withMessage('email / password is required!'),
+]
 
 exports.validationResult = (req, res, next) => {
   console.log("Request : ", req);
