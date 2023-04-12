@@ -42,7 +42,7 @@ exports.checkLoginField =[
 
 exports.validationResult = (req, res, next) => {
   const result = validationResult(req).array();
-  if (!result.length) {
+  if (result === []) {
     res.json(result);
   }else{
   const error = result[0].msg;
