@@ -1,7 +1,7 @@
 exports.test = async (req, res, next) => {
-  const body = req.body;
+  const {email,password} = req.body;
   try {
-      res.json(body);
+      res.json(email,password);
   } catch (err) {
     res.json("notnot");
     // next(err);
