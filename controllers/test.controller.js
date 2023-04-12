@@ -11,7 +11,6 @@ exports.test = async (req, res, next) => {
     const user = await findUserPerEmail({email});
       res.json({user});
   } catch (err) {
-    res.json("notnot");
-    // next(err);
+    next(err);
   }
 };
