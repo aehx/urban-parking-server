@@ -41,7 +41,6 @@ exports.checkLoginField =[
 ]
 
 exports.validationResult = (req, res, next) => {
-  console.log("Request : ", req);
   const result = validationResult(req).array();
   if (!result.length) {
     return next();
