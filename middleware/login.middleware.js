@@ -31,20 +31,20 @@ exports.checkSignupField = [
     }),
 ];
 
-exports.checkLoginField =[
+exports.checkLoginField = [
   check('email').trim().isEmail().withMessage('email / password is required!'),
   check('password')
     .trim()
     .not()
     .isEmpty()
     .withMessage('email / password is required!'),
-]
+];
 
 exports.validationResult = (req, res, next) => {
-  const result = validationResult(req).array();
-  if (!result.length) {
-    return next();
-  }else{
-  const error = result[0].msg;
-  res.json({ success: false, message: error, req: req });}
+  const errors = validationResult(req).array();
+  if (errors.length) {
+    return res.status(400).json({ success: false, message: errors[0].msg, req: req });
+  }
+  next();
 };
+
