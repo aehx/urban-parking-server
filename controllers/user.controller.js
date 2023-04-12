@@ -26,7 +26,6 @@ exports.login = async (req, res, next) => {
     } else {
       res.status(400).json({ error: "Wrong email or password" });
     }
-    next();
   } catch (e) {
     next(e);
   }
