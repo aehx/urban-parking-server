@@ -4,7 +4,7 @@ exports.findUserPerEmail = (email) => {
    return User.findOne({ "local.email": email });
 };
 exports.findUserPerId = (id) => {
-  return User.findById({ _id : id  }).exec();
+  return User.findById({ _id : id  });
 };
 
 exports.createUser = async (user) => {
