@@ -31,7 +31,7 @@ exports.login = async (req, res, next) => {
 };
 
 exports.signup = async (req, res, next) => {
-  const body = req.body;
+  const {body} = req.body;
   try {
     const user = await findUserPerEmail(body.email);
     if (user) {
