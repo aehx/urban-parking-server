@@ -7,9 +7,9 @@ exports.getParkings = async (req, res,next) => {
       fetch('https://data.opendatasoft.com/api/records/1.0/search/?dataset=st_park_p%40scnbdx&q=&rows=20&start=69&facet=exploit&facet=ta_type&facet=secteur&facet=propr&facet=etat&facet=type'),
     ];
     const parkingData = await Promise.all(parkingPromises)
-      .then((responses) => response.json()).then((data)=>{
-        return data.map((response) => {
-          return response.records.map((parking) => {
+      .then((response) => response.json()).then((data)=>{
+        return data.map((parkingData) => {
+          return parkingData.records.map((parking) => {
             const { fields, geometry } = parking;
             if (fields && geometry) {
               const { name, dispo, id, nom, places, counterfreeplaces, facilityid, libres, ident,nom_parking,geo_shape } = fields;
@@ -29,9 +29,9 @@ exports.getParkings = async (req, res,next) => {
           });
         }).flat().filter(Boolean);
       });
-      res.status(200).json(parkingData);
+      res.status(200).json({parkingData});
       next()
   } catch (error) {
-    res.status(400).json("Error in get parkings")
+    next(e)
   }
 }
