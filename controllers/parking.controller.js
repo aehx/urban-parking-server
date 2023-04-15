@@ -6,7 +6,6 @@ exports.getParking = async (_req, res,next) => {
       'https://data.opendatasoft.com/api/records/1.0/search/?dataset=places-disponibles-parkings-saemes%40saemes&q=&rows=20&start=19&facet=date&facet=nom_parking&facet=type_de_parc&facet=horaires_d_acces_au_public_pour_les_usagers_non_abonnes&facet=countertype&facet=counterfreeplaces',
       'https://data.opendatasoft.com/api/records/1.0/search/?dataset=st_park_p%40scnbdx&q=&rows=20&start=69&facet=exploit&facet=ta_type&facet=secteur&facet=propr&facet=etat&facet=type'
     ];
-    
     const parkingData = await Promise.all(
       parkingUrls.map(url => fetch(url).then(res => res.json()))
     ).then(responses => {
@@ -23,7 +22,7 @@ exports.getParking = async (_req, res,next) => {
             return {
               name: parkingName,
               dispo: parkingDispo ?? 0,
-              ParkId: parkingId,
+              parkId: parkingId,
               latitude: parkingLat,
               longitude: parkingLng,
             };
