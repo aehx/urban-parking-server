@@ -30,6 +30,7 @@ exports.getParkings = async (req, res,next) => {
         }).flat().filter(Boolean);
       });
       res.status(200).json(parkingData);
+      next()
   } catch (error) {
     res.status(400).json("Error in get parkings")
   }
