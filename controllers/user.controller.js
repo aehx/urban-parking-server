@@ -33,20 +33,20 @@ exports.login = async (req, res, next) => {
 exports.signup = async (req, res, next) => {
   const  body  = req.body;
   try {
-    res.json({body})
-    // const user = await findUserPerEmail(body.email);
+    const user = await findUserPerEmail(body.email);
     if (user) {
       res.json({ error: "user already exist" });
     } else {
-      // const newUser = await createUser(body);
-      // const token = await createJwtToken(newUser._id);
-      // await updateUserToken(newUser._id, token);
-      // const createdUser = {
-      //   username: newUser.username,
-      //   favorites: newUser.favorites,
-      //   token,
-      // };
-      // res.status(200).json(createdUser);
+      // res.json({body})
+      const newUser = await createUser(body);
+      const token = await createJwtToken(newUser._id);
+      await updateUserToken(newUser._id, token);
+      const createdUser = {
+        username: newUser.username,
+        favorites: newUser.favorites,
+        token,
+      };
+      res.status(200).json(createdUser);
     }
   } catch (e) {
     next(e);
