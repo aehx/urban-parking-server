@@ -74,11 +74,11 @@ exports.updatefavorites = async (req, res, next) => {
 };
 
 exports.getUserFavorites = async (_req,res,next)=>{
-  const {email} = req.params;
+  // const {email} = req.params;
   try {
+    res.json("ok");
     // const user = await findUserPerEmail(email);
     // const userFavorites = user.favorites;
-    res.json(email);
   } catch (error) {
     next(e)
   }
