@@ -55,7 +55,7 @@ exports.signup = async (req, res, next) => {
 
 exports.signout = async (req, res, next) => {
   // const { token } = req.body;
-  const body = req.body;
+  const body = req;
   try {
     res.json(body)
     // res.json(req.user)
