@@ -9,7 +9,8 @@ exports.findUserPerId = (id) => {
 
 exports.createUser = async (user) => {
   try {
-    const password = await User.hashPassword(user.password);
+    // const password = await User.hashPassword(user.password);
+    const password = "await User.hashPassword(user.password)";
     const newUser = new User({
       username: user.username,
       local: { email: user.email, password: password },
