@@ -2,7 +2,8 @@ const User = require("../database/models/user.model");
 
 exports.updateFavoriteParking = async (userId, parkingName) => {
   try {
-    const update = await User.findById(userId).favorites.includes(parkingName);
+    const update = await User.findById(userId);
+    const include = update.favorites.includes(parkingName);
       // ? { $pull: { favorites: parkingName } }
       // : { $push: { favorites: parkingName } };
 
@@ -15,7 +16,7 @@ exports.updateFavoriteParking = async (userId, parkingName) => {
     if(!updatedUserFavorite){
       return {error:"user not found"}
     }
-    return update;
+    return include;
   } catch (error) {
     return error;
   }
