@@ -8,8 +8,8 @@ exports.updateFavoriteParking = async (userId, parkingName) => {
         [parkingName]: {
           $cond: [
             { $in: [parkingName, "$favorites"] },
-            { $pull: { favoris: parkingName } },
-            { $push: { favoris: parkingName } },
+            { $pull: { favorites: parkingName } },
+            { $push: { favorites: parkingName } },
           ],
         },
       },

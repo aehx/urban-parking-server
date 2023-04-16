@@ -56,11 +56,12 @@ exports.signup = async (req, res, next) => {
 exports.signout = async (req, res, next) => {
   // const { token } = req.body;
   try {
+    res.json(req.user)
     // const user = req ;
     // const tokens = req.user.tokens;
     // const newToken = tokens.filter((t) => t !== token);
     // await updateUserToken(user._id, newToken);
-    res.status(200).json({ message: "Sign Out successfully!"});
+    // res.status(200).json({ message: "Sign Out successfully!"});
   } catch (e) {
     next(e);
   }
