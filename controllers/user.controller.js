@@ -55,9 +55,9 @@ exports.signup = async (req, res, next) => {
 
 exports.signout = async (req, res, next) => {
   // const { token } = req.body;
-  const body = req;
+  const body = !!req.user;
   try {
-    res.json(body)
+    res.json({body})
     // res.json(req.user)
     // const user = req ;
     // const tokens = req.user.tokens;
