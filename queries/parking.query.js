@@ -15,7 +15,7 @@ exports.updateFavoriteParking = async (userId, parkingName) => {
     if(!updatedUserFavorite){
       return {error:"user not found"}
     }
-    return updatedUserFavorite.favorites;
+    return updatedUserFavorite;
   } catch (error) {
     return error;
   }
