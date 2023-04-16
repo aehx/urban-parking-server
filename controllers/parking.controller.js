@@ -76,9 +76,9 @@ exports.updatefavorites = async (req, res, next) => {
 exports.getUserFavorites = async (_req,res,next)=>{
   const {email} = req.params;
   try {
-    const user = await findUserPerEmail(email);
-    const userFavorites = user.favorites;
-    res.json(userFavorites);
+    // const user = await findUserPerEmail(email);
+    // const userFavorites = user.favorites;
+    res.json(email);
   } catch (error) {
     next(e)
   }
