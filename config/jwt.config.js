@@ -11,8 +11,8 @@ exports.verifyToken = async (req,res,next)=>{
   if(req.headers && req.headers.authorization){
   const token = req.headers.authorization.split(" ")[1];
   try {
-        const decoded = jwt.verify(token,secret);
-        res.json({decoded})
+    res.json("{decoded}")
+        // const decoded = jwt.verify(token,secret);
         // const user = await findUserPerId(decoded.sub);
       //   if(!user){
       //     res.status(401).json({error:"unauthorized access"})
