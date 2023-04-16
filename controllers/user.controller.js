@@ -37,7 +37,6 @@ exports.signup = async (req, res, next) => {
     if (user) {
       res.json({ error: "user already exist" });
     } else {
-      // res.json({body})
       const newUser = await createUser(body);
       const token = await createJwtToken(newUser._id);
       await updateUserToken(newUser._id, token);
