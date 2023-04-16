@@ -60,7 +60,7 @@ exports.signout = async (req, res, next) => {
     // const tokens = req.user.tokens;
     // const newToken = tokens.filter((t) => t !== token);
     // await updateUserToken(user._id, newToken);
-    res.status(200).json({ message: "Sign Out successfully!" ,user});
+    res.status(200).json({ message: "Sign Out successfully!"});
   } catch (e) {
     next(e);
   }
