@@ -3,7 +3,7 @@ const User = require("../database/models/user.model");
 exports.updateFavoriteParking = async (userId, parkingName) => {
   try {
     const updatedUserFavorite = await User.findOneAndUpdate(
-      userId,
+      {_id : userId},
       {
         [parkingName]: {
           $cond: [
