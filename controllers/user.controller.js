@@ -19,6 +19,7 @@ exports.login = async (req, res, next) => {
       const returnedUser = {
         username: user.username,
         favorites: user.favorites,
+        email,
         token,
       };
       res.status(200).json(returnedUser);
@@ -41,6 +42,7 @@ exports.signup = async (req, res, next) => {
       const token = await createJwtToken(newUser._id);
       await updateUserToken(newUser._id, token);
       const createdUser = {
+        email:newUser.email,
         username: newUser.username,
         favorites: newUser.favorites,
         token,
