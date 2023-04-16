@@ -1,4 +1,5 @@
 const { updateFavoriteParking } = require("../queries/parking.query");
+const {findUserPerEmail } = require("../queries/user.queries");
 
 exports.getParking = async (_req, res, next) => {
   try {
@@ -71,3 +72,14 @@ exports.updatefavorites = async (req, res, next) => {
     next(e);
   }
 };
+
+exports.getUserFavorites = async (_req,res,next)=>{
+  const {email} = req.params;
+  try {
+    const user = await findUserPerEmail(email);
+    const userFavorites = user.favorites;
+    res.json(userFavorites);
+  } catch (error) {
+    next(e)
+  }
+}
