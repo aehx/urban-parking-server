@@ -1,6 +1,10 @@
 const router = require("express").Router();
-const { getParking } = require("../controllers/parking.controller");
+const {
+  getParking,
+  updatefavorites,
+} = require("../controllers/parking.controller");
 
-router.get("/",getParking);
+router.get("/", getParking);
+router.put("/favorites", updatefavorites);
 
 module.exports = router;

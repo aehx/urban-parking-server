@@ -31,7 +31,7 @@ exports.login = async (req, res, next) => {
 };
 
 exports.signup = async (req, res, next) => {
-  const {body} = req.body;
+  const { body } = req.body;
   try {
     const user = await findUserPerEmail(body.email);
     if (user) {
@@ -54,23 +54,13 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.signout = async (req, res, next) => {
-  const authHeaders = req.headers && req.headers.authorization;
+  const user = req.user;
   try {
-    if (authHeaders) {
-      const token = req.headers.authorization.split(" ")[1];
-      if (!token) {
-        return res
-          .status(401)
-          .json({ result: false, error: "Authorization fail" });
-      } else {
-        const tokens = req.user.tokens;
-        const newToken = tokens.filter((t) => t !== token);
-        await updateUserToken(req.user._id, newToken);
-        res.status(200).json({ message: "Sign Out successfully!" });
-      }
-    }
+    const tokens = req.user.tokens;
+    const newToken = tokens.filter((t) => t !== token);
+    await updateUserToken(req.user._id, newToken);
+    res.status(200).json({ message: "Sign Out successfully!" });
   } catch (e) {
-    console.log(e.message);
     next(e);
   }
 };

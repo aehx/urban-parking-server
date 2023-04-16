@@ -8,7 +8,7 @@ const userSchema = schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
   },
-  favorites: [Number],
+  favorites: [String],
   tokens: [{ type: Object }],
 });
 
