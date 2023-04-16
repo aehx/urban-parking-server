@@ -11,15 +11,15 @@ exports.verifyToken = async (req,res,next)=>{
   if(req.headers && req.headers.authorization){
   const token = req.headers.authorization.split(" ")[1];
   try {
-    res.json("{decoded}")
-        // const decoded = jwt.verify(token,secret);
-        // const user = await findUserPerId(decoded.sub);
-      //   if(!user){
-      //     res.status(401).json({error:"unauthorized access"})
-      //   }else{
-      //     req.user = user
-      //     next()
-      // }
+    // res.json("{decoded}")
+        const decoded = jwt.verify(token,secret);
+        const user = await findUserPerId(decoded.sub);
+        if(!user){
+          res.status(401).json({error:"unauthorized access"})
+        }else{
+          req.user = user
+          next()
+      }
   } catch (e) {
     switch(e.name){
       case "JsonWebTokenError":
