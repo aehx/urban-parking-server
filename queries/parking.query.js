@@ -9,14 +9,14 @@ exports.updateFavoriteParking = async (userId, parkingName) => {
 
     const updatedUserFavorite = await User.findOneAndUpdate(
       {_id : userId},
-      update,
+      include,
       { new: true }
     );
 
     if(!updatedUserFavorite){
       return {error:"user not found"}
     }
-    return include;
+    return updatedUserFavorite;
   } catch (error) {
     return error;
   }
