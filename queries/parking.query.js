@@ -2,7 +2,7 @@ const User = require("../database/models/user.model");
 
 exports.updateFavoriteParking = async (userId, parkingName) => {
   try {
-    const update = await User.findById({id:userId}).favorites.includes(parkingName);
+    const update = await User.findById(userId);
       // ? { $pull: { favorites: parkingName } }
       // : { $push: { favorites: parkingName } };
 
