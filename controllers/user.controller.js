@@ -31,7 +31,7 @@ exports.login = async (req, res, next) => {
 };
 
 exports.signup = async (req, res, next) => {
-  const { body } = req.body;
+  const  body  = req.body;
   try {
     res.json({body})
     // const user = await findUserPerEmail(body.email);
