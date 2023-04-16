@@ -66,7 +66,7 @@ exports.updatefavorites = async (req, res, next) => {
       user._id,
       parkingName
     );
-    res.json(user._id);
+    res.json(parkingName);
   } catch (error) {
     next(e);
   }
