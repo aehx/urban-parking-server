@@ -10,7 +10,7 @@ exports.createJwtToken = (user)=>{
 exports.verifyToken = async (req,res,next)=>{
   if(req.headers && req.headers.authorization){
   const token = req.headers.authorization.split(" ")[1];
-  res.json("OK REQ HEADERS")
+  res.json(token)
   // try {
   //     const decoded = jwt.verify(token,secret);
   //     const user = await findUserPerId(decoded.sub);
