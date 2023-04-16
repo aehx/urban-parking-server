@@ -54,12 +54,10 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.signout = async (req, res, next) => {
-  // const { token } = req.body;
-  const body = !!req.user;
+  const { token } = req.body;
+  const body = req.user;
   try {
     res.json({body})
-    // res.json(req.user)
-    // const user = req ;
     // const tokens = req.user.tokens;
     // const newToken = tokens.filter((t) => t !== token);
     // await updateUserToken(user._id, newToken);
