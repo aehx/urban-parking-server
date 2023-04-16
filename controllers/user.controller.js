@@ -33,11 +33,11 @@ exports.login = async (req, res, next) => {
 exports.signup = async (req, res, next) => {
   const { body } = req.body;
   try {
-    const user = await findUserPerEmail(body.email);
+    res.json({body})
+    // const user = await findUserPerEmail(body.email);
     if (user) {
       res.json({ error: "user already exist" });
     } else {
-      res.json("ok")
       // const newUser = await createUser(body);
       // const token = await createJwtToken(newUser._id);
       // await updateUserToken(newUser._id, token);
