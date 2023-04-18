@@ -66,3 +66,13 @@ exports.signout = async (req, res, next) => {
     next(e);
   }
 };
+
+exports.removeToken = async (req, res,next) => {
+  const {email} = req.body;
+  try {
+    await findByIdAndUpdate(email,{tokens:[]})
+    res.status(200).json("token removed successfully")
+  } catch (e) {
+    next(e)
+  }
+}
