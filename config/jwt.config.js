@@ -3,7 +3,7 @@ const { findUserPerId } = require('../queries/user.queries');
 const secret = process.env.JWT_SECRET;
 
 exports.createJwtToken = (user)=>{
-  const token = jwt.sign({sub :user._id},secret,{expiresIn:"1m"})
+  const token = jwt.sign({sub :user._id,exp:(Date.now()/1000) + (1 * 60)},secret)
   return token;
 }
 
