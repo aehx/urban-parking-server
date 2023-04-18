@@ -1,8 +1,6 @@
-const { test } = require("../controllers/test.controller.js");
-
 const router = require("express").Router();
 
-router.post("/", (req,res)=>{
+router.post("/", (_req,res)=>{
   res.json("success")
 });
 
