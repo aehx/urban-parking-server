@@ -3,7 +3,7 @@ const { findUserPerId } = require('../queries/user.queries');
 const secret = process.env.JWT_SECRET;
 
 exports.createJwtToken = (user)=>{
-  const token = jwt.sign({sub :user._id},secret,{expiresIn:"10h"})
+  const token = jwt.sign({sub :user._id},secret,{expiresIn:"1m"})
   return token;
 }
 
@@ -25,7 +25,7 @@ exports.verifyToken = async (req,res,next)=>{
       case "JsonWebTokenError":
         return res.status(401).json({result : false,error:"unauthorized access"});
         case "TokenExpiredError":
-          return res.status(401).json({result : false,error:"Session expired, please sign in again"});
+          return res.status(401).json({result : false,error:"Expired Error"});
     }
     res.json({error:"Server error"})
   }
