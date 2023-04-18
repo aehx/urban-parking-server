@@ -70,8 +70,9 @@ exports.signout = async (req, res, next) => {
 exports.removeToken = async (req, res,next) => {
   const {email} = req.body;
   try {
-    // await findUserPerEmail({"local.email" : email})
-    res.status(200).json("token removed successfully")
+    const user = await findUserPerEmail({"local.email" : email})
+    res.json(user)
+    // res.status(200).json("token removed successfully")
   } catch (e) {
     next(e)
   }
