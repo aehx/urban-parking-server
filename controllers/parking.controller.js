@@ -59,6 +59,20 @@ exports.getParking = async (_req, res, next) => {
   }
 };
 
+exports.updatefavorites = async (req, res, next) => {
+  const { parkingName } = req.body;
+  const user = req.user;
+  try {
+    const userFavoriteParking = await updateFavoriteParking(
+      user._id,
+      parkingName
+    );
+    res.json(userFavoriteParking);
+  } catch (error) {
+    next(e);
+  }
+};
+
 exports.getUserFavorites = async (req,res,next)=>{
   const {email} = req.params;
   try {
