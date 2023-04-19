@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { login, signup } = require("../controllers/user.controller");
-const { test } = require("../controllers/test.controller");
 const {
   checkSignupField,
   checkLoginField,
