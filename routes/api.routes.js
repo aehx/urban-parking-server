@@ -1,7 +1,9 @@
+const { test } = require("../controllers/test.controller.js");
+
 const router = require("express").Router();
 
-router.get("/", (req,res)=>{
-  res.status(200).json("success")
+router.post("/", (req, res) => {
+  res.json("ok")
 });
 
 module.exports = router;
