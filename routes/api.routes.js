@@ -2,7 +2,7 @@ const { test } = require("../controllers/test.controller.js");
 
 const router = require("express").Router();
 
-router.post("/", (req,res)=>{
+router.get("/", (req,res)=>{
   res.json("success")
 });
 
