@@ -59,7 +59,7 @@ exports.getParking = async (_req, res, next) => {
   }
 };
 
-exports.updatefavorites = async (req, res, next) => {
+exports.updateFavorites = async (req, res, next) => {
   const { parkingName } = req.body;
   const user = req.user;
   try {
