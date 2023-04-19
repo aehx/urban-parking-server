@@ -78,3 +78,17 @@ exports.removeToken = async (req, res,next) => {
     next(e)
   }
 }
+
+exports.updateFavorites = async (req, res, next) => {
+  const { parkingName } = req.body;
+  const user = req.user;
+  try {
+    const userFavoriteParking = await updateFavoriteParking(
+      user._id,
+      parkingName
+    );
+    res.json(userFavoriteParking);
+  } catch (error) {
+    next(e);
+  }
+};
